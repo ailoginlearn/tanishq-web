@@ -2,12 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   ArrowUpRight, Mail, Phone, Linkedin, MessageCircle, Menu, X, Send,
-  Code2, Sparkles, Palette, Search, Smartphone, Zap, Bot, Globe, MapPin,
+  Code2, Sparkles, Palette, Search, Globe, MapPin,
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
-import photo from "@/assets/tanishq.jpg.asset.json";
+import photo from "@/assets/tanishq-tech.jpg";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
+import { BuildProcess } from "@/components/portfolio/BuildProcess";
 
 const TITLE = "Tanishq Jain | Freelance Website Developer & AI Web Designer in India";
 const DESC =
@@ -97,14 +98,16 @@ function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "glass py-3" : "py-6"}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
-        <button onClick={() => go("home")} className="flex items-center gap-3" aria-label="Tanishq Jain home">
-          <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
+        <button onClick={() => go("home")} className="group flex items-center gap-3" aria-label="Tanishq Jain home">
+          <span className="relative rounded-xl bg-silver p-1 ring-2 ring-cyan/60 glow transition-transform duration-300 group-hover:scale-110">
+            <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
+          </span>
           <span className="hidden font-display text-lg font-bold tracking-wide sm:block">TANISHQ<span className="text-cyan">.</span></span>
         </button>
         <ul className="hidden items-center gap-10 md:flex">
           {NAV.map((n) => (
             <li key={n.id}>
-              <button onClick={() => go(n.id)} className={`nav-link text-sm font-medium tracking-wider uppercase transition-colors hover:text-cyan ${active === n.id ? "active text-cyan" : "text-muted-foreground"}`}>
+              <button onClick={() => go(n.id)} className={`nav-link text-sm font-medium tracking-wider uppercase transition-all duration-500 hover:text-cyan hover:opacity-100 ${active === n.id ? "active text-cyan opacity-100" : "text-muted-foreground opacity-60"}`}>
                 {n.label}
               </button>
             </li>
@@ -174,27 +177,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* 3D orbit */}
-        <div className="relative mx-auto aspect-square w-full max-w-[460px] [perspective:1000px]">
-          <div className="absolute inset-0 rounded-full border border-cyan/30 animate-spin-slow [transform:rotateX(70deg)]">
-            <span className="absolute -top-2 left-1/2 h-4 w-4 rounded-full bg-cyan glow" />
-          </div>
-          <div className="absolute inset-6 rounded-full border border-azure/40 animate-spin-rev [transform:rotateY(70deg)]">
-            <span className="absolute top-1/2 -right-2 h-3 w-3 rounded-full bg-azure glow" />
-          </div>
-          <div className="absolute inset-12 rounded-full border border-dashed border-silver/20 animate-spin-slow" />
-          <div className="absolute inset-0 flex items-center justify-center animate-float">
-            <div className="relative h-56 w-56 overflow-hidden rounded-[2rem] glass glow sm:h-64 sm:w-64">
-              <img src={logo.url} alt="Tanishq Jain website developer logo" className="h-full w-full object-cover" />
-            </div>
-          </div>
-          {["</>", "AI", "{ }", "SEO"].map((t, k) => (
-            <span key={t} className="glass absolute rounded-xl px-3 py-2 font-mono text-sm text-cyan animate-float"
-              style={{ top: ["8%", "70%", "20%", "82%"][k], left: ["5%", "0%", "80%", "72%"][k], animationDelay: `${k * 0.8}s` }}>
-              {t}
-            </span>
-          ))}
-        </div>
+        <BuildProcess />
       </div>
       <button onClick={() => scrollTo("about")} aria-label="Scroll down" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block">
         <div className="flex h-10 w-6 justify-center rounded-full border-2 border-muted-foreground/50 pt-2"><span className="h-2 w-1 animate-bounce rounded-full bg-cyan" /></div>
