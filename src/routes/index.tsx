@@ -2,12 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   ArrowUpRight, Mail, Phone, Linkedin, MessageCircle, Menu, X, Send,
-  Code2, Sparkles, Palette, Search, Smartphone, Zap, Bot, Globe, MapPin,
+  Code2, Sparkles, Palette, Search, Globe, MapPin,
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
-import photo from "@/assets/tanishq.jpg.asset.json";
+import photo from "@/assets/tanishq-tech.jpg";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
+import { BuildProcess } from "@/components/portfolio/BuildProcess";
 
 const TITLE = "Tanishq Jain | Freelance Website Developer & AI Web Designer in India";
 const DESC =
@@ -97,14 +98,16 @@ function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "glass py-3" : "py-6"}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
-        <button onClick={() => go("home")} className="flex items-center gap-3" aria-label="Tanishq Jain home">
-          <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
+        <button onClick={() => go("home")} className="group flex items-center gap-3" aria-label="Tanishq Jain home">
+          <span className="relative rounded-xl bg-silver p-1 ring-2 ring-cyan/60 glow transition-transform duration-300 group-hover:scale-110">
+            <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
+          </span>
           <span className="hidden font-display text-lg font-bold tracking-wide sm:block">TANISHQ<span className="text-cyan">.</span></span>
         </button>
         <ul className="hidden items-center gap-10 md:flex">
           {NAV.map((n) => (
             <li key={n.id}>
-              <button onClick={() => go(n.id)} className={`nav-link text-sm font-medium tracking-wider uppercase transition-colors hover:text-cyan ${active === n.id ? "active text-cyan" : "text-muted-foreground"}`}>
+              <button onClick={() => go(n.id)} className={`nav-link text-sm font-medium tracking-wider uppercase transition-all duration-500 hover:text-cyan hover:opacity-100 ${active === n.id ? "active text-cyan opacity-100" : "text-muted-foreground opacity-60"}`}>
                 {n.label}
               </button>
             </li>
@@ -174,27 +177,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* 3D orbit */}
-        <div className="relative mx-auto aspect-square w-full max-w-[460px] [perspective:1000px]">
-          <div className="absolute inset-0 rounded-full border border-cyan/30 animate-spin-slow [transform:rotateX(70deg)]">
-            <span className="absolute -top-2 left-1/2 h-4 w-4 rounded-full bg-cyan glow" />
-          </div>
-          <div className="absolute inset-6 rounded-full border border-azure/40 animate-spin-rev [transform:rotateY(70deg)]">
-            <span className="absolute top-1/2 -right-2 h-3 w-3 rounded-full bg-azure glow" />
-          </div>
-          <div className="absolute inset-12 rounded-full border border-dashed border-silver/20 animate-spin-slow" />
-          <div className="absolute inset-0 flex items-center justify-center animate-float">
-            <div className="relative h-56 w-56 overflow-hidden rounded-[2rem] glass glow sm:h-64 sm:w-64">
-              <img src={logo.url} alt="Tanishq Jain website developer logo" className="h-full w-full object-cover" />
-            </div>
-          </div>
-          {["</>", "AI", "{ }", "SEO"].map((t, k) => (
-            <span key={t} className="glass absolute rounded-xl px-3 py-2 font-mono text-sm text-cyan animate-float"
-              style={{ top: ["8%", "70%", "20%", "82%"][k], left: ["5%", "0%", "80%", "72%"][k], animationDelay: `${k * 0.8}s` }}>
-              {t}
-            </span>
-          ))}
-        </div>
+        <BuildProcess />
       </div>
       <button onClick={() => scrollTo("about")} aria-label="Scroll down" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block">
         <div className="flex h-10 w-6 justify-center rounded-full border-2 border-muted-foreground/50 pt-2"><span className="h-2 w-1 animate-bounce rounded-full bg-cyan" /></div>
@@ -214,16 +197,12 @@ function SectionTitle({ tag, title, sub }: { tag: string; title: string; sub: st
 }
 
 const SKILLS = [
-  { icon: Code2, t: "Website Development", d: "Modern, clean-coded websites with HTML, CSS, JavaScript and React." },
-  { icon: Bot, t: "AI Web Development", d: "Building faster and smarter with AI tools — shipping premium sites in days, not months." },
-  { icon: Smartphone, t: "Responsive Design", d: "Pixel-perfect layouts that look stunning on mobile, tablet and desktop." },
-  { icon: Search, t: "SEO Optimization", d: "Keyword-rich content, meta tags and fast load times to rank higher on Google." },
-  { icon: Palette, t: "UI / UX Design", d: "Aesthetic, user-friendly interfaces with motion, 3D and smooth animations." },
-  { icon: Zap, t: "Performance", d: "Lightning-fast websites optimised for Core Web Vitals and conversions." },
+  { icon: Code2, t: "Website Development", d: "Fast, clean-coded websites built with modern tech and AI." },
+  { icon: Palette, t: "UI / UX Design", d: "Aesthetic, user-friendly interfaces with motion and 3D." },
+  { icon: Search, t: "SEO Optimization", d: "Structured content and speed that help you rank on Google." },
 ];
 
 function About() {
-  const tech = ["HTML5", "CSS3", "JavaScript", "React", "Tailwind CSS", "TypeScript", "AI Tools", "SEO", "Responsive Design", "UI/UX", "Animations", "Hosting & Domains"];
   return (
     <section id="about" className="relative py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -232,7 +211,7 @@ function About() {
           <div className="reveal relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-3 rounded-[2rem] bg-brand opacity-60 blur-2xl" />
             <TiltCard className="group overflow-hidden rounded-[2rem] border border-border">
-              <img src={photo.url} alt="Tanishq Jain - freelance website developer" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src={photo} alt="Tanishq Jain - freelance website developer" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <div className="glass absolute right-4 bottom-4 left-4 rounded-xl p-4 [transform:translateZ(40px)]">
                 <p className="font-display font-bold">Tanishq Jain</p>
                 <p className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3" /> India · Website Developer</p>
@@ -243,31 +222,34 @@ function About() {
             <h3 className="text-2xl font-bold sm:text-3xl">Turning ideas into <span className="text-cyan">digital experiences</span></h3>
             <p className="mt-5 leading-relaxed text-muted-foreground">
               I'm <strong className="text-foreground">Tanishq Jain</strong>, a freelance <strong className="text-foreground">website developer in India</strong> who
-              designs and builds premium, high-converting websites for businesses and brands. I combine modern web technologies with
-              <strong className="text-foreground"> AI-powered website development</strong> to deliver beautiful, responsive and SEO-optimised sites — faster and more affordably.
+              designs and builds premium, high-converting websites for businesses and brands, using
+              <strong className="text-foreground"> AI-powered website development</strong> to deliver faster and more affordably.
             </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              From concept to launch, I handle design, development, animations, mobile responsiveness and search engine optimisation so your business
-              gets a website that looks luxurious and ranks on Google.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {tech.map((t) => (
-                <span key={t} className="rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-sm transition-colors hover:border-cyan hover:text-cyan">{t}</span>
-              ))}
+            {/* identity terminal */}
+            <div className="glass mt-8 overflow-hidden rounded-2xl font-mono text-sm">
+              <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-destructive" /><span className="h-2.5 w-2.5 rounded-full bg-silver" /><span className="h-2.5 w-2.5 rounded-full bg-cyan" />
+                <span className="ml-3 text-xs text-muted-foreground">~/tanishq — whoami</span>
+              </div>
+              <div className="space-y-1.5 p-5">
+                <p><span className="text-cyan">$</span> whoami</p>
+                <p className="text-muted-foreground">{"{"}</p>
+                {[["name", "Tanishq Jain"], ["role", "Website Developer"], ["superpower", "Code + AI"], ["mission", "Make every business look premium online"], ["status", "Open for projects"]].map(([k, v]) => (
+                  <p key={k} className="pl-5"><span className="text-azure">"{k}"</span>: <span className="text-silver">"{v}"</span>,</p>
+                ))}
+                <p className="text-muted-foreground">{"}"}<span className="ml-1 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-cyan" /></p>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SKILLS.map(({ icon: Icon, t, d }, k) => (
-            <div key={t} className="reveal" style={{ transitionDelay: `${k * 90}ms` }}>
-              <TiltCard className="group glass h-full rounded-2xl p-7">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-primary-foreground glow [transform:translateZ(30px)]">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-bold">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d}</p>
-              </TiltCard>
+      <div className="relative mt-20 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]">
+          {[...SKILLS, ...SKILLS, ...SKILLS, ...SKILLS].map(({ icon: Icon, t, d }, k) => (
+            <div key={k} className="glass flex w-[320px] shrink-0 items-start gap-4 rounded-2xl p-6 sm:w-[380px]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-primary-foreground glow"><Icon className="h-6 w-6" /></div>
+              <div><h3 className="text-base font-bold">{t}</h3><p className="mt-1 text-sm text-muted-foreground">{d}</p></div>
             </div>
           ))}
         </div>
@@ -277,8 +259,8 @@ function About() {
 }
 
 const PROJECTS = [
-  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure.", tags: ["Responsive", "SEO", "AI-Built"] },
-  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google.", tags: ["UI/UX", "Performance", "AI-Built"] },
+  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: "/videos/jmj.mp4", tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
+  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: "/videos/prerana.mp4", tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
 ];
 
 function Projects() {
@@ -291,21 +273,20 @@ function Projects() {
           {PROJECTS.map((p, k) => (
             <div key={p.name} className="reveal" style={{ transitionDelay: `${k * 150}ms` }}>
               <TiltCard className="group glass h-full overflow-hidden rounded-3xl">
-                <div className="relative h-56 overflow-hidden border-b border-border bg-secondary">
-                  <div className="absolute inset-0 bg-brand opacity-20 transition-opacity duration-500 group-hover:opacity-40" />
-                  <div className="absolute inset-0 grid-bg" />
-                  <div className="absolute inset-6 rounded-xl border border-border bg-background/70 p-4 transition-transform duration-500 group-hover:scale-105 [transform:translateZ(40px)]">
-                    <div className="flex gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-destructive" /><span className="h-2.5 w-2.5 rounded-full bg-silver" /><span className="h-2.5 w-2.5 rounded-full bg-cyan" /></div>
-                    <div className="mt-3 flex items-center gap-2 rounded-md bg-secondary px-3 py-1.5 font-mono text-xs text-muted-foreground"><Globe className="h-3 w-3" /> {p.domain}</div>
-                    <div className="mt-5 font-display text-3xl font-extrabold text-gradient">{p.name}</div>
-                    <div className="mt-3 h-2 w-2/3 rounded bg-muted" /><div className="mt-2 h-2 w-1/2 rounded bg-muted" />
+                <div className="relative border-b border-border bg-secondary p-3">
+                  <div className="mb-2 flex items-center gap-2 px-1">
+                    <span className="h-2.5 w-2.5 rounded-full bg-destructive" /><span className="h-2.5 w-2.5 rounded-full bg-silver" /><span className="h-2.5 w-2.5 rounded-full bg-cyan" />
+                    <span className="ml-2 flex items-center gap-1.5 rounded-md bg-background/60 px-3 py-1 font-mono text-[11px] text-muted-foreground"><Globe className="h-3 w-3" /> {p.domain}</span>
+                  </div>
+                  <div className="overflow-hidden rounded-xl">
+                    <video src={p.video} autoPlay muted loop playsInline preload="metadata" aria-label={`${p.name} homepage preview`}
+                      className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
                   </div>
                 </div>
                 <div className="p-7">
                   <p className="font-mono text-xs text-cyan uppercase">{p.tag}</p>
                   <h3 className="mt-2 text-2xl font-bold">{p.name}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">{p.tags.map((t) => <span key={t} className="rounded-full bg-secondary px-3 py-1 text-xs">{t}</span>)}</div>
                   <a href={p.url} target="_blank" rel="noopener" className="mt-6 inline-flex items-center gap-2 font-semibold text-cyan">
                     Visit Website <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </a>
@@ -354,12 +335,6 @@ function Contact() {
     } catch { setStatus("err"); }
   };
 
-  const items = [
-    { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-    { icon: Phone, label: "Phone", value: "+91 74898 42114", href: "tel:+917489842114" },
-    { icon: MessageCircle, label: "WhatsApp", value: "Chat on WhatsApp", href: WHATSAPP },
-    { icon: Linkedin, label: "LinkedIn", value: "tanishq-jain-sggscc", href: LINKEDIN },
-  ];
   const input = "w-full rounded-xl border border-input bg-secondary/50 px-4 py-3.5 outline-none transition-all placeholder:text-muted-foreground focus:border-cyan focus:glow";
 
   return (
@@ -367,20 +342,18 @@ function Contact() {
       <div className="absolute top-1/3 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-azure/20 blur-[140px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionTitle tag="contact" title="Let's Build Together" sub="Need a website for your business? Hire a freelance web developer — let's talk." />
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
-          <div className="reveal space-y-4">
-            {items.map(({ icon: Icon, label, value, href }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener"
-                className="group glass flex items-center gap-5 rounded-2xl p-5 transition-all hover:-translate-y-1 hover:border-cyan">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-primary-foreground transition-transform group-hover:scale-110 group-hover:rotate-6"><Icon className="h-5 w-5" /></div>
-                <div className="min-w-0"><p className="text-xs text-muted-foreground uppercase">{label}</p><p className="truncate font-semibold">{value}</p></div>
-                <ArrowUpRight className="ml-auto h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:text-cyan group-hover:rotate-45" />
-              </a>
-            ))}
-            <div className="flex gap-3 pt-2">
-              <a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp" className="flex h-12 w-12 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><MessageCircle className="h-5 w-5" /></a>
-              <a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn" className="flex h-12 w-12 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Linkedin className="h-5 w-5" /></a>
-              <a href={`mailto:${EMAIL}`} aria-label="Email" className="flex h-12 w-12 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Mail className="h-5 w-5" /></a>
+        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.5fr]">
+          <div className="reveal glass flex flex-col justify-center gap-5 rounded-3xl p-7">
+            <p className="font-display text-xl font-bold">Got a project in mind?</p>
+            <p className="text-sm text-muted-foreground">Reply within 24 hours.</p>
+            <div className="space-y-2 text-sm">
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 transition-colors hover:text-cyan"><Mail className="h-4 w-4 text-cyan" /> {EMAIL}</a>
+              <a href="tel:+917489842114" className="flex items-center gap-2 transition-colors hover:text-cyan"><Phone className="h-4 w-4 text-cyan" /> +91 74898 42114</a>
+            </div>
+            <div className="flex gap-3">
+              <a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><MessageCircle className="h-5 w-5" /></a>
+              <a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Linkedin className="h-5 w-5" /></a>
+              <a href={`mailto:${EMAIL}`} aria-label="Email" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Mail className="h-5 w-5" /></a>
             </div>
           </div>
           <form onSubmit={submit} className="reveal glass space-y-4 rounded-3xl p-7 sm:p-9" noValidate>
@@ -404,17 +377,14 @@ function Contact() {
 }
 
 function Footer() {
-  const line = "WEBSITE DEVELOPER ✦ AI WEB DESIGN ✦ SEO ✦ RESPONSIVE ✦ ";
+  const line = "WEBSITE DEVELOPER — AI WEB DESIGN — SEO — RESPONSIVE — ";
   return (
     <footer className="relative overflow-hidden border-t border-border pt-10 pb-8">
       <div className="flex whitespace-nowrap animate-marquee font-display text-6xl font-extrabold text-secondary sm:text-8xl" aria-hidden>
         <span>{line.repeat(3)}</span><span>{line.repeat(3)}</span>
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center justify-between gap-5 px-5 sm:flex-row sm:px-8">
-        <div className="flex items-center gap-3">
-          <img src={logo.url} alt="" className="h-9 w-11 rounded-md object-cover" />
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Tanishq Jain · Turning ideas into digital experiences</p>
-        </div>
+        <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Tanishq Jain · Turning ideas into digital experiences</p>
         <button onClick={() => scrollTo("home")} className="nav-link font-mono text-sm text-cyan">Back to top ↑</button>
       </div>
     </footer>
