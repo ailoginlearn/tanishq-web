@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep animated portfolio identity and brand icons in focused browser-safe components, so the one-page route stays readable and SSR-safe.
+- Define portfolio typography and hover effects in global semantic tokens; load font files through root head links.

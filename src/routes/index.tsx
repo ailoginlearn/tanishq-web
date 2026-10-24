@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  ArrowUpRight, Mail, Phone, Linkedin, MessageCircle, Menu, X, Send,
+  ArrowUpRight, Mail, Phone, Linkedin, Menu, X, Send,
   Code2, Sparkles, Palette, Search, Globe, MapPin,
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
-import photo from "@/assets/tanishq-tech.jpg";
+import photo from "@/assets/tanishq-portrait.jpg";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
 import { BuildProcess } from "@/components/portfolio/BuildProcess";
+import { TypedIdentity } from "@/components/portfolio/TypedIdentity";
+import { WhatsAppIcon } from "@/components/portfolio/WhatsAppIcon";
+import { Button } from "@/components/ui/button";
 
 const TITLE = "Tanishq Jain | Freelance Website Developer & AI Web Designer in India";
 const DESC =
@@ -98,18 +101,18 @@ function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "glass py-3" : "py-6"}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
-        <button onClick={() => go("home")} className="group flex items-center gap-3" aria-label="Tanishq Jain home">
-          <span className="relative rounded-xl bg-silver p-1 ring-2 ring-cyan/60 glow transition-transform duration-300 group-hover:scale-110">
+        <Button variant="ghost" onClick={() => go("home")} className="group h-auto gap-3 p-0 hover:bg-transparent" aria-label="Tanishq Jain home">
+          <span className="relative rounded-lg bg-background p-1 transition-transform duration-300 group-hover:scale-105">
             <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
           </span>
           <span className="hidden font-display text-lg font-bold tracking-wide sm:block">TANISHQ<span className="text-cyan">.</span></span>
-        </button>
+        </Button>
         <ul className="hidden items-center gap-10 md:flex">
           {NAV.map((n) => (
             <li key={n.id}>
-              <button onClick={() => go(n.id)} className={`nav-link text-sm font-medium tracking-wider uppercase transition-all duration-500 hover:text-cyan hover:opacity-100 ${active === n.id ? "active text-cyan opacity-100" : "text-muted-foreground opacity-60"}`}>
+              <Button variant="ghost" onClick={() => go(n.id)} className={`nav-link h-auto rounded-none p-0 text-sm font-medium uppercase hover:bg-transparent hover:text-cyan hover:opacity-100 ${active === n.id ? "active text-cyan opacity-100" : "text-muted-foreground opacity-60"}`}>
                 {n.label}
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
@@ -209,12 +212,11 @@ function About() {
         <SectionTitle tag="about" title="About Me" sub="Web developer passionate about building digital experiences that grow businesses." />
         <div className="grid items-center gap-14 lg:grid-cols-[1fr_1.3fr]">
           <div className="reveal relative mx-auto w-full max-w-sm">
-            <div className="absolute -inset-3 rounded-[2rem] bg-brand opacity-60 blur-2xl" />
             <TiltCard className="group overflow-hidden rounded-[2rem] border border-border">
               <img src={photo} alt="Tanishq Jain - freelance website developer" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <div className="glass absolute right-4 bottom-4 left-4 rounded-xl p-4 [transform:translateZ(40px)]">
                 <p className="font-display font-bold">Tanishq Jain</p>
-                <p className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3" /> India · Website Developer</p>
+                <p className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3" /> Delhi · Website Developer</p>
               </div>
             </TiltCard>
           </div>
@@ -231,14 +233,7 @@ function About() {
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive" /><span className="h-2.5 w-2.5 rounded-full bg-silver" /><span className="h-2.5 w-2.5 rounded-full bg-cyan" />
                 <span className="ml-3 text-xs text-muted-foreground">~/tanishq — whoami</span>
               </div>
-              <div className="space-y-1.5 p-5">
-                <p><span className="text-cyan">$</span> whoami</p>
-                <p className="text-muted-foreground">{"{"}</p>
-                {[["name", "Tanishq Jain"], ["role", "Website Developer"], ["superpower", "Code + AI"], ["mission", "Make every business look premium online"], ["status", "Open for projects"]].map(([k, v]) => (
-                  <p key={k} className="pl-5"><span className="text-azure">"{k}"</span>: <span className="text-silver">"{v}"</span>,</p>
-                ))}
-                <p className="text-muted-foreground">{"}"}<span className="ml-1 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-cyan" /></p>
-              </div>
+              <TypedIdentity />
             </div>
           </div>
         </div>
@@ -351,7 +346,7 @@ function Contact() {
               <a href="tel:+917489842114" className="flex items-center gap-2 transition-colors hover:text-cyan"><Phone className="h-4 w-4 text-cyan" /> +91 74898 42114</a>
             </div>
             <div className="flex gap-3">
-              <a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><MessageCircle className="h-5 w-5" /></a>
+              <Button asChild variant="outline" size="icon" className="h-11 w-11 rounded-full border-border bg-transparent hover:bg-brand hover:text-primary-foreground hover:glow"><a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp"><WhatsAppIcon className="h-5 w-5" /></a></Button>
               <a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Linkedin className="h-5 w-5" /></a>
               <a href={`mailto:${EMAIL}`} aria-label="Email" className="flex h-11 w-11 items-center justify-center rounded-full border border-border transition-all hover:bg-brand hover:text-primary-foreground hover:glow"><Mail className="h-5 w-5" /></a>
             </div>
