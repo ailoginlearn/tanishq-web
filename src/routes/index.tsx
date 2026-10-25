@@ -15,16 +15,16 @@ import { TypedIdentity } from "@/components/portfolio/TypedIdentity";
 import { WhatsAppIcon } from "@/components/portfolio/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 
-const TITLE = "Tanishq Jain | Freelance Website Developer & AI Web Designer in India";
+const TITLE = "Tanishq Jain | Freelance Website Developer & AI Web Designer in Delhi";
 const DESC =
-  "Tanishq Jain is a freelance website developer in India building fast, SEO-friendly, responsive business websites using AI-powered web development. Hire a web developer today.";
+  "Tanishq Jain is a freelance website developer in Delhi building fast, SEO-friendly, responsive business websites using AI-powered web development. Hire a web developer today.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: "Tanishq Jain, website developer, freelance web developer India, AI website development, web designer, responsive website design, SEO friendly website, business website developer, portfolio" },
+      { name: "keywords", content: "Tanishq Jain, website developer, freelance web developer Delhi, AI website development, web designer, responsive website design, SEO friendly website, business website developer, portfolio" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
@@ -107,7 +107,7 @@ function Navbar() {
           <span className="relative">
             <img src={logo.url} alt="Tanishq Jain logo" className="h-16 w-20 shrink-0 object-contain sm:h-20 sm:w-24" />
           </span>
-          <span className="hidden font-display text-lg font-bold tracking-wide sm:block">TANISHQ<span className="text-cyan">.</span></span>
+          <span className="font-display text-base font-bold tracking-wide sm:text-lg">TANISHQ<span className="text-cyan">.</span></span>
         </Button>
         <ul className="hidden items-center gap-10 md:flex">
           {NAV.map((n) => (
@@ -225,7 +225,7 @@ function About() {
           <div className="reveal">
             <h3 className="text-2xl font-bold sm:text-3xl">Turning ideas into <span className="text-cyan">digital experiences</span></h3>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              I'm <strong className="text-foreground">Tanishq Jain</strong>, a freelance <strong className="text-foreground">website developer in India</strong> who
+              I'm <strong className="text-foreground">Tanishq Jain</strong>, a freelance <strong className="text-foreground">website developer in Delhi</strong> who
               designs and builds premium, high-converting websites for businesses and brands, using
               <strong className="text-foreground"> AI-powered website development</strong> to deliver faster and more affordably.
             </p>
@@ -256,7 +256,7 @@ function About() {
 }
 
 const PROJECTS = [
-  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: jmjVideo.url, tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
+  { name: "J Mahendrakant Jewellers", url: "https://jmj1961.com", domain: "jmj1961.com", video: jmjVideo.url, tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
   { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: preranaVideo.url, tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
 ];
 
