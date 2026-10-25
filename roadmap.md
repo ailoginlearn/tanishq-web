@@ -6,3 +6,6 @@
 - [x] Keep the hero greeting on one line.
 - [x] Smooth project recordings with playing JMJ banner and no persistent popup.
 - [x] Verify the page and video playback.
+- [x] Show TANISHQ beside the logo on mobile.
+- [x] Replace every "India" with "Delhi".
+- [x] Rename the JMJ project heading to "J Mahendrakant Jewellers".
