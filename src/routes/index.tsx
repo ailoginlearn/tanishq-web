@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
 import photo from "@/assets/tanishq-themed-portrait.jpg";
-import jmjVideo from "@/assets/jmj-smooth.webm.asset.json";
-import preranaVideo from "@/assets/prerana-smooth.webm.asset.json";
+import jmjVideo from "@/assets/jmj-hero-only.webm.asset.json";
+import preranaVideo from "@/assets/prerana-hero-only.webm.asset.json";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
 import { BuildProcess } from "@/components/portfolio/BuildProcess";
