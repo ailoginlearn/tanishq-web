@@ -1,4 +1,5 @@
 # Requested portfolio updates
+- [x] Limit both project videos to the hero section and navbar, without scrolling, and verify playback.
 - [x] Enlarge the unchanged logo and remove its separate background.
 - [x] Theme-matched close-up portrait background.
 - [x] Tighten the gap between Projects and Contact.
