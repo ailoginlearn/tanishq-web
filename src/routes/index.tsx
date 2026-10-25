@@ -5,7 +5,9 @@ import {
   Code2, Sparkles, Palette, Search, Globe, MapPin,
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
-import photo from "@/assets/tanishq-portrait.jpg";
+import photo from "@/assets/tanishq-themed-portrait.jpg";
+import jmjVideo from "@/assets/jmj-smooth.webm.asset.json";
+import preranaVideo from "@/assets/prerana-smooth.webm.asset.json";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
 import { BuildProcess } from "@/components/portfolio/BuildProcess";
@@ -102,8 +104,8 @@ function Navbar() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "glass py-3" : "py-6"}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
         <Button variant="ghost" onClick={() => go("home")} className="group h-auto gap-3 p-0 hover:bg-transparent" aria-label="Tanishq Jain home">
-          <span className="relative rounded-lg bg-background p-1 transition-transform duration-300 group-hover:scale-105">
-            <img src={logo.url} alt="Tanishq Jain logo" className="h-10 w-12 shrink-0 rounded-lg object-cover" />
+          <span className="relative">
+            <img src={logo.url} alt="Tanishq Jain logo" className="h-16 w-20 shrink-0 object-contain sm:h-20 sm:w-24" />
           </span>
           <span className="hidden font-display text-lg font-bold tracking-wide sm:block">TANISHQ<span className="text-cyan">.</span></span>
         </Button>
@@ -153,8 +155,8 @@ function Hero() {
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5 font-mono text-xs text-cyan">
             <span className="h-2 w-2 animate-pulse rounded-full bg-cyan" /> Available for freelance projects
           </p>
-          <h1 className="text-5xl leading-[1.05] font-extrabold sm:text-6xl lg:text-7xl">
-            Hi, I'm <span className="text-gradient">Tanishq Jain</span>
+          <h1 className="leading-[1.1] font-extrabold">
+            <span className="hero-greeting whitespace-nowrap">Hi, I'm <span className="text-gradient">Tanishq Jain</span></span>
             <span className="mt-3 block text-3xl font-bold text-muted-foreground sm:text-4xl lg:text-5xl">
               I craft{" "}
               <span key={i} className="inline-block text-silver animate-in fade-in slide-in-from-bottom-4 duration-700">{words[i]}</span>
@@ -254,13 +256,13 @@ function About() {
 }
 
 const PROJECTS = [
-  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: "/videos/jmj.mp4", tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
-  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: "/videos/prerana.mp4", tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
+  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: jmjVideo.url, tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
+  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: preranaVideo.url, tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
 ];
 
 function Projects() {
   return (
-    <section id="projects" className="relative py-28">
+    <section id="projects" className="relative pt-20 pb-8 sm:pt-28 sm:pb-10">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionTitle tag="projects" title="Featured Projects" sub="Real client websites designed and developed by me." />
@@ -333,7 +335,7 @@ function Contact() {
   const input = "w-full rounded-xl border border-input bg-secondary/50 px-4 py-3.5 outline-none transition-all placeholder:text-muted-foreground focus:border-cyan focus:glow";
 
   return (
-    <section id="contact" className="relative py-28">
+    <section id="contact" className="relative pt-10 pb-20 sm:pt-12 sm:pb-28">
       <div className="absolute top-1/3 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-azure/20 blur-[140px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionTitle tag="contact" title="Let's Build Together" sub="Need a website for your business? Hire a freelance web developer — let's talk." />

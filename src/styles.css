@@ -136,6 +136,11 @@
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 .identity-code { font-size: 12px; line-height: 1.7; }
+.hero-greeting { font-size: 28px; }
+@media (min-width: 400px) { .hero-greeting { font-size: 32px; } }
+@media (min-width: 640px) { .hero-greeting { font-size: 48px; } }
+@media (min-width: 1024px) { .hero-greeting { font-size: 42px; } }
+@media (min-width: 1280px) { .hero-greeting { font-size: 48px; } }
 @media (min-width: 640px) { .identity-code { font-size: 14px; } }
 
 @media (prefers-reduced-motion: reduce) {
