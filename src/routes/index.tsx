@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import logo from "@/assets/logo-mark.png.asset.json";
 import photo from "@/assets/tanishq-themed-portrait.jpg";
+import jmjVideo from "@/assets/jmj-smooth.webm.asset.json";
+import preranaVideo from "@/assets/prerana-smooth.webm.asset.json";
 import { NetworkCanvas } from "@/components/portfolio/NetworkCanvas";
 import { TiltCard } from "@/components/portfolio/TiltCard";
 import { BuildProcess } from "@/components/portfolio/BuildProcess";
@@ -254,8 +256,8 @@ function About() {
 }
 
 const PROJECTS = [
-  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: "/videos/jmj.mp4", tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
-  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: "/videos/prerana.mp4", tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
+  { name: "JMJ 1961", url: "https://jmj1961.com", domain: "jmj1961.com", video: jmjVideo.url, tag: "Business Website", desc: "A premium, responsive business website crafted to showcase a legacy brand since 1961 with elegant design and SEO-ready structure." },
+  { name: "Prerana Ashish", url: "https://preranaashish.com", domain: "preranaashish.com", video: preranaVideo.url, tag: "Brand Website", desc: "A modern, aesthetic website built for a client's online presence — fast loading, mobile-friendly and optimised to rank on Google." },
 ];
 
 function Projects() {
